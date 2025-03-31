@@ -1,0 +1,15 @@
+services:
+  mariadb:
+  wordpress:
+    depends_on:
+      - "mariadb"
+  nginx:
+
+volumes:
+  mariadb-data:
+  wordpress-data:
+
+networks:
+  inception-network:
+    name: inception-network
+    driver: bridge
