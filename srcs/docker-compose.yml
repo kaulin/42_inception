@@ -1,8 +1,23 @@
 services:
   mariadb:
+    image: mariadb
+    container_name: mariadb
+    restart: always
+    build:
+      context: requirements/mariadb
+      dockerfile: dockerfile
+    env_file:
+      - .env
+    volumes:
+      - mariadb-data:/var/lib/mysql
+    networks:
+      - inception-network
+
   wordpress:
     depends_on:
-      - "mariadb"
+      mariadb:
+        condition: service_healthy
+
   nginx:
 
 volumes: 
