@@ -5,7 +5,7 @@ services:
       - "mariadb"
   nginx:
 
-volumes:
+volumes: 
   mariadb-data:
   wordpress-data:
 
